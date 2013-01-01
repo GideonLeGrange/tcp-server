@@ -1,9 +1,14 @@
 package me.legrange.tcpserver;
 
-/** This interface must be implemented to provide a factory for creating new Logic instances. */
+import java.net.Socket;
+
+/**
+ * Factory class that supplies a service object on request. 
+ * Users of the library needs to implement this. 
+ * @author gideon
+ */
 public interface ServiceFactory {
-	
-	/** return a new logic instance */
-	public Service getInstance();
-	
+    
+    public Service getService(Socket sock);
+    
 }

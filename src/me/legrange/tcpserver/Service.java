@@ -5,7 +5,7 @@ package me.legrange.tcpserver;
 public interface Service {
 	
 	/** start a new conversation */
-	public String start();
+	public String open();
 	
 	/** check to see if the service is still interested in talking. */
 	public boolean isRunning();

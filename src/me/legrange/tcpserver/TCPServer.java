@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 public class TCPServer implements Runnable {
 
     /**
-     * instantiate a new server that will listen on the given port with the give
+     * instantiate a new server that will listen on the given port with the given
      * default access policy.
      */
     public TCPServer(int port, ServiceFactory fact, boolean defaultPolicy) {
@@ -87,9 +87,8 @@ public class TCPServer implements Runnable {
                 if (checkAccess(s)) {
                     Thread t = new Thread(new Runner(s));
                     t.setDaemon(true);
-                    if (verbose) {
+                    if (verbose) 
                         log.info(String.format("Accepting connection %s", describeConnection(s)));
-                    }
                     t.start();
                 } else {
                     log.info(String.format("Rejecting connection %s", describeConnection(s)));
@@ -160,7 +159,8 @@ public class TCPServer implements Runnable {
             } finally {
                 try {
                     socket.close();
-                    log.info(String.format("Connection closed %s", describeConnection(socket)));
+                    if (verbose)
+                        log.info(String.format("Connection closed %s", describeConnection(socket)));
                 } catch (IOException e) {
                     log.error(String.format("Error closing connection %s: %s", describeConnection(socket), e.getMessage()));
                 }

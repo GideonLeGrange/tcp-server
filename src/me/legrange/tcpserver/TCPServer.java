@@ -19,7 +19,7 @@ public class TCPServer implements Runnable {
      * instantiate a new server that will listen on the given port with the given
      * default access policy.
      */
-    public TCPServer(int port, ServiceFactory fact, boolean defaultPolicy) {
+    public TCPServer(int port, ServiceFactory fact, boolean defaultPolicy)  throws NetworkException {
         this(port, fact, new IPAccessList(defaultPolicy));
     }
 
@@ -37,7 +37,7 @@ public class TCPServer implements Runnable {
      * instantiate a new server that will listen on the given port and allow
      * connections from anywhere by default.
      */
-    public TCPServer(int port, ServiceFactory fact) {
+    public TCPServer(int port, ServiceFactory fact) throws NetworkException {
         this(port, fact, true);
     }
 

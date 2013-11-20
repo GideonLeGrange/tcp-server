@@ -105,7 +105,7 @@ public class TCPServer implements Runnable {
      */
     private boolean checkAccess(Socket s) {
         try {
-            return acl.checkAccess(s.getInetAddress().getHostAddress());
+            return acl.checkAccess(s.getInetAddress());
         } catch (NetworkException e) {
             log.error(String.format("Invalid IP address %s in ACL check.", s.getInetAddress().getHostAddress()));
         }

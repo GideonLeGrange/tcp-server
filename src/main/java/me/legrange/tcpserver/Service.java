@@ -4,13 +4,18 @@ package me.legrange.tcpserver;
   * a simple TCP server. */
 public interface Service {
 	
-	/** start a new conversation */
+	/** Called by the server to start a new conversation, returning the 
+         * first data sent to the connection. 
+         * @return The text to send to the connection */
 	public String open();
 	
-	/** check to see if the service is still interested in talking. */
+	/** Called by the server to check to see if the service is still interested in talking.
+         * @return  True if the session needs to continue */
 	public boolean isRunning();
 	
-	/** process a line received */
+	/** Called by the server to process a line of text received from the network.
+         * @param line The text to process
+         * @return The response to send to the network */
 	public String receive(String line);
         
 	
